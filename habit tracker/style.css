@@ -1,0 +1,217 @@
+body {
+    background: #ffe6f2;
+    font-family: 'Kindegarten', sans-serif;
+    text-align: center;
+}
+#title {
+    margin: 30px 0 20px 0;
+    color: #e48abf;
+}
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 40px);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.day {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff0f6;
+    color: #e48abf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #f8bbd0;
+    font-size: 18px;
+    transition: background 0.2s, color 0.2s;
+}
+.day.past {
+    background: #f8bbd0;
+    color: #fff;
+}
+.day.has-reminder {
+    background: #ff8a80;
+    color: #fff;
+}
+.day.today {
+    border: 2px solid #e48abf;
+    font-weight: bold;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.2);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff0f6;
+    border-radius: 20px;
+    padding: 30px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 0 2px 10px #e48abf44;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 20px; top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #e48abf;
+}
+input, textarea {
+    width: 90%;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #f8bbd0;
+    padding: 8px;
+    font-family: inherit;
+    background: #fff;
+}
+button {
+    background: #e48abf;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button#deleteBtn {
+    background: #ff8a80;
+}body {
+    background: #ffe6f2;
+    font-family: 'Kindegarten', sans-serif;
+    text-align: center;
+}
+#title {
+    margin: 30px 0 20px 0;
+    color: #e48abf;
+}
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 40px);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.calendar-box {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px #e48abf33;
+    padding: 32px 24px 24px 24px;
+    display: inline-block;
+    margin: 0 auto 40px auto;
+}
+.day {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff0f6;
+    color: #e48abf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #f8bbd0;
+    font-size: 18px;
+    transition: background 0.2s, color 0.2s;
+}
+.day.past {
+    background: #f8bbd0;
+    color: #fff;
+}
+.day.has-reminder {
+    background: #f37c71;
+    color: #fff;
+}
+.day.today {
+    border: 2px solid #e48abf;
+    background: #ffe6f2;
+    font-weight: bold;
+    box-shadow: 0 0 8px #e48abf44;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.2);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff0f6;
+    border-radius: 20px;
+    padding: 30px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 0 2px 10px #e48abf44;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 20px; top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #e48abf;
+}
+input, textarea {
+    width: 90%;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #f8bbd0;
+    padding: 8px;
+    font-family: inherit;
+    background: #fff;
+}
+button {
+    background: #e48abf;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button#deleteBtn {
+    background: #ff8a80;
+}
+
+@media (max-width: 500px) {
+    #calendar {
+        grid-template-columns: repeat(7, 28px);
+        gap: 6px;
+    }
+    .day {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+    .calendar-box {
+        padding: 12px 4px;
+    }
+}
+
+#weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #e48abf;
+  font-family: inherit;
+}
+#weekdays span {
+  text-align: center;
+}
