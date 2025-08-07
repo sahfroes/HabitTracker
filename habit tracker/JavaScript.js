@@ -44,13 +44,24 @@ function deleteReminder(year, month, day) {
 function renderCalendar() {
     updateTitle();
     calendar.innerHTML = '';
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    for (let d = 1; d <= daysInMonth; d++) {
+    const firstDayOfWeek = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInCurrentMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+    // Dias do mês anterior
+    for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'day other-month';
+        dayDiv.textContent = daysInPrevMonth - i;
+        calendar.appendChild(dayDiv);
+    }
+
+    // Dias do mês atual
+    for (let d = 1; d <= daysInCurrentMonth; d++) {
         const dayDiv = document.createElement('div');
         dayDiv.className = 'day';
 
-        // Hoje
         const isToday = (
             d === today.getDate() &&
             currentMonth === today.getMonth() &&
@@ -58,7 +69,6 @@ function renderCalendar() {
         );
         if (isToday) dayDiv.classList.add('today');
 
-        // Passado
         const isPast = (
             currentYear < today.getFullYear() ||
             (currentYear === today.getFullYear() && currentMonth < today.getMonth()) ||
@@ -66,7 +76,6 @@ function renderCalendar() {
         );
         if (isPast) dayDiv.classList.add('past');
 
-        // Tem lembrete
         if (getReminder(currentYear, currentMonth, d).reminder) {
             dayDiv.classList.add('has-reminder');
         }
@@ -75,7 +84,19 @@ function renderCalendar() {
         dayDiv.onclick = () => openModal(d);
         calendar.appendChild(dayDiv);
     }
+
+    // Dias do próximo mês para preencher a grade
+    const totalDays = firstDayOfWeek + daysInCurrentMonth;
+    const remainingDays = (7 - (totalDays % 7)) % 7;
+    for (let i = 1; i <= remainingDays; i++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'day other-month';
+        dayDiv.textContent = i;
+        calendar.appendChild(dayDiv);
+    }
 }
+
+
 
 // Abre o modal para adicionar/editar lembrete
 function openModal(day) {

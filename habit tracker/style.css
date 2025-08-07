@@ -215,3 +215,11 @@ button#deleteBtn {
 #weekdays span {
   text-align: center;
 }
+
+.day.other-month {
+  color: #ffffff;
+  background-color: #f39cdd; /* cor mais clara ou neutra */
+  opacity: 0.6;
+  pointer-events: none; /* evita clicar nos dias de outros meses */
+}
+
